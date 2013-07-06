@@ -5,6 +5,12 @@
 
 #import <Cordova/CDV.h>
 
+@interface CDVPlugin (LocalNotificationAdditions)
+
+- (void)didReceiveLocalNotification:(NSNotification *)notification;
+
+@end
+
 @interface LocalNotification : CDVPlugin
 
 - (void)addNotification:(CDVInvokedUrlCommand*)command;

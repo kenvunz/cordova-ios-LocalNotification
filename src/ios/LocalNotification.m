@@ -6,6 +6,15 @@
 #import "LocalNotification.h"
 #import <Cordova/CDV.h>
 
+@implementation CDVPlugin (LocalNotificationAdditions)
+
+- (void)didReceiveLocalNotification:(NSNotification *)notification
+{
+    // UILocalNotification* localNotification = [notification object]; // get the payload as a LocalNotification
+}
+
+@end
+
 @implementation LocalNotification
 
 -(void)addNotification:(CDVInvokedUrlCommand*)command {
@@ -79,7 +88,14 @@
     javaScript   = [pluginResult toSuccessCallbackString: [notif.userInfo objectForKey:@"callbackId"]];
     
     [self writeJavascript:javaScript];
-    
+}
+
+- (void)pluginInitialize
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveLocalNotification:)
+                                                 name:CDVLocalNotification
+                                               object:nil];
 }
 
 
