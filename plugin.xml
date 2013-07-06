@@ -26,16 +26,8 @@
       <plugin name="LocalNotification" value="LocalNotification"/>
     </config-file>
 
-    <!-- CDV >= 2.7 -->
-    <!-- <config-file target="config.xml" parent="/widget/"> -->
-    <!--   <feature name="LocalNotification"> -->
-    <!--     <param name="ios-package" value="LocalNotification" /> -->
-    <!--   </feature> -->
-    <!-- </config-file> -->
-
-    <header-file src="src/ios/LocalNotification.h" />
+      <header-file src="src/ios/LocalNotification.h" />
     <source-file src="src/ios/LocalNotification.m" />
-
 
     <resource-file src="horn.caf" />
   </platform>
