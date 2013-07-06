@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.phonegap.plugins.cordova-ios-LocalNotification"
-    version="1.0.2">
+    version="1.0.0">
 
   <name>Cordova iOS LocalNotification</name>
   <config-file target="config.xml" parent="/*">
@@ -14,26 +14,30 @@
     <engine name="cordova" version=">=2.3.0" />
   </engines>
 
+  <asset src="www/cordova.LocalNotification.js" target="cordova.LocalNotification.js" />
+
   <!-- android -->
   <!-- not supported -->
 
   <!-- ios -->
   <platform name="ios">
-    <!-- CDV < 2.4 -->
-    <plugins-plist key="com.phonegap.plugins.cordova-ios-LocalNotification"
-                   string="LocalNotification" />
-    <!-- CDV 2.4 had a /cordova/plugins instead of /widget/plugins so ignored! -->
-    <!-- CDV 2.5+ -->
-    <config-file target="config.xml" parent="/widget/">
-      <feature name="LocalNotification">
-        <param name="ios-package" value="LocalNotification" />
-      </feature>
+    <!-- CDV >= 2.3 -->
+    <config-file target="config.xml" parent="plugins">
+      <plugin name="LocalNotification" value="LocalNotification"/>
     </config-file>
+
+    <!-- CDV >= 2.7 -->
+    <!-- <config-file target="config.xml" parent="/widget/"> -->
+    <!--   <feature name="LocalNotification"> -->
+    <!--     <param name="ios-package" value="LocalNotification" /> -->
+    <!--   </feature> -->
+    <!-- </config-file> -->
 
     <header-file src="src/ios/LocalNotification.h" />
     <source-file src="src/ios/LocalNotification.m" />
 
-    <asset src="www/cordova.LocalNotification.js" target="cordova.LocalNotification.js" />
+
+    <resource-file src="horn.caf" />
   </platform>
 
 </plugin>
