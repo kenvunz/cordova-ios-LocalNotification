@@ -1,18 +1,15 @@
 Cordova Local Notification Plugin
 =================================
 
-Based on 
-
-- Cordova 2.3.0+ plugin to create local notifications on iOs by Olivier Lesnicki 
+- Forked from Cordova 2.3.0+ plugin to create local notifications on iOs by Olivier Lesnicki 
 - changes to reduce manual steps and make [plugman](https://github.com/apache/cordova-plugman) compatible
-
 
 Installing the plugin
 ---------------------
 
 This is what I do to install:
 
-    $ plugman  --platform ios --project . --plugin git@github.com:bruchu/cordova-ios-LocalNotification.git --www app/scripts/vendor/
+    $ plugman  --platform ios --project . --plugin https://github.com/bruchu/cordova-ios-LocalNotification.git --www app/scripts/vendor/
 
 Using the plugin
 ----------------
