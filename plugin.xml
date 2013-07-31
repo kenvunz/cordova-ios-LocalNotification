@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.phonegap.plugins.cordova-ios-LocalNotification"
+    id="org.apache.cordova.localnotification"
     version="1.0.0">
 
-  <name>Cordova iOS LocalNotification</name>
-  <config-file target="config.xml" parent="/*">
-    <access origin="build.phonegap.com" />
-    <access origin="s3.amazonaws.com" />
-  </config-file>
+    <name>Cordova iOS LocalNotification</name>
 
-  <engines>
-    <engine name="cordova" version=">=2.3.0" />
-  </engines>
-
-  <asset src="www/cordova.LocalNotification.js" target="cordova.LocalNotification.js" />
-
-  <!-- android -->
-  <!-- not supported -->
+    <engines>
+        <engine name="cordova" version=">=2.3.0" />
+    </engines>
 
   <!-- ios -->
-  <platform name="ios">
-    <!-- CDV >= 2.3 -->
-    <config-file target="config.xml" parent="plugins">
-      <plugin name="LocalNotification" value="LocalNotification"/>
-    </config-file>
+    <platform name="ios">
+        <js-module src="www/localnotification.js" name="localnotification">
+             <clobbers target="localNotification" />
+         </js-module>
 
-      <header-file src="src/ios/LocalNotification.h" />
-    <source-file src="src/ios/LocalNotification.m" />
+        <!-- CDV >= 2.7 -->
+        <config-file target="config.xml" parent="/*">
+            <feature name="LocalNotification">
+                <param name="ios-package" value="LocalNotification" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/LocalNotification.h" />
+        <source-file src="src/ios/LocalNotification.m" />
 
     <resource-file src="horn.caf" />
   </platform>
