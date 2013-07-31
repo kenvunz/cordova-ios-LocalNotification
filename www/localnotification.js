@@ -13,7 +13,8 @@ LocalNotification.prototype.add = function(options) {
         soundName       : "beep.caf" ,
         badge           : 0  ,
         notificationId  : 1  ,
-        callBack        : function(notificationId){}
+        background      : function(notificationId){},
+        foreground      : function(notificationId){}
     };
 
     if(options){
@@ -29,10 +30,19 @@ LocalNotification.prototype.add = function(options) {
     }
 
     exec(
-        function(notificationId) {
+        function(params) {
             window.setTimeout(function(){
-                if(typeof defaults.callBack == 'function'){
-                    defaults.callBack(notificationId);
+                if(typeof defaults.foreground == 'function'){
+                    if(params.appState == "active") {
+                        defaults.foreground(params.notificationId);
+                        return;
+                    }
+                }
+                if(typeof defaults.background == 'function'){
+                    if(params.appState != "active") {
+                        defaults.background(params.notificationId);
+                        return;
+                    }
                 }
             }, 1);
         },
